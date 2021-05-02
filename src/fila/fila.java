@@ -65,14 +65,18 @@ public class fila<T> {
         Iterador it = new Iterador(this.fila); 
         this.elementos--;
         int count = 0;
+        this.fila[0] = null;
        
         while(it.hasNext()){ //avançar a fila
             if(it.next() != this.fila[tamanho - 1]){
-                this.fila[count] = this.fila[count+1];
-                this.fila[count+1] = null;
+                T aux = this.fila[count + 1];
+                this.fila[count+1] = this.fila[count];
+                this.fila[count] = aux;
+                count++;
             }
-            count++;
-        } 
+            
+        }
+   
         System.out.println("elemento removido");
     }
     
